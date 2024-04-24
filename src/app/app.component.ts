@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` <div class="app">Hello Angular!</div> `,
+  template: `
+    <button (click)="increment()">Add</button>
+    <button (click)="decrement()">dec</button>
+    <button (click)="reset()">reset</button>
+    <div class="app">{{ count }}</div>
+  `,
   styles: [
     `
       .app {
@@ -15,7 +20,20 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class AppComponent implements OnInit {
+  count!: number;
   ngOnInit() {
-    console.log('Hello World!');
+    this.count = 0;
+  }
+
+  increment() {
+    this.count++;
+  }
+
+  decrement() {
+    this.count--;
+  }
+
+  reset() {
+    this.count = 0;
   }
 }
